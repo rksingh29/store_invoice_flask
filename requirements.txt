@@ -1,0 +1,7 @@
+Flask>=2.3
+openpyxl>=3.1
+# OCR (optional) - the Tesseract engine itself must be installed separately, see README
+Pillow>=10.0
+pytesseract>=0.3.10
+# Reading text from digital (non-scanned) PDF invoices
+pypdf>=4.0

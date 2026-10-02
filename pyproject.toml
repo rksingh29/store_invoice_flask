@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "store-invoice-tracker"
+dynamic = ["version"]
+description = "Store Invoice & Purchase Order Tracker - Flask + SQLite web app with Excel import/export and OCR"
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = ["invoice", "purchase order", "store", "inventory", "flask"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Framework :: Flask",
+    "Operating System :: OS Independent",
+    "Environment :: Web Environment",
+]
+dependencies = [
+    "Flask>=2.3",
+    "openpyxl>=3.1",
+    "Pillow>=10.0",
+    "pytesseract>=0.3.10",
+    "pypdf>=4.0",
+]
+
+[project.scripts]
+store-invoice = "store_invoice.cli:main"
+
+[tool.hatch.version]
+path = "store_invoice/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["store_invoice"]
+exclude = ["**/__pycache__", "**/*.db"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "store_invoice/",
+    "app.py",
+    "buildall.py",
+    "pyproject.toml",
+    "requirements.txt",
+    "README.md",
+]
+exclude = ["**/__pycache__", "**/*.db"]
